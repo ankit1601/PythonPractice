@@ -5,6 +5,17 @@ Search strings:  search anywhere in the string and group first occurrence
 Findall strings: search all including duplicate in the string
 Replace: replace string with sub matched by regex
 
+Characters in Regular Expression
+\d: Reperesnts any digit 0-9
+\D: Represent any non-digit
+\s: Represent while space e.g \t\n\r\f\v
+\S: Represent non while space character
+\w: Represent any alphanumeric (A to Z, a to z, 0 to 9)
+\W: Represent any non alphanumeric character
+\b: Represent space around word
+\A: Match only at start of the string
+\Z: Match only at end of the string
+
 Quantifiers in Regex
 + : 1 or more repetition of the preceding regex
 *: 0 or more repetition of preceding regex
@@ -98,3 +109,51 @@ print(res9)
 # find out all the dates included in the string
 res10 = re.findall(r'\d{2}-\d{2}-\d{4}', 'hello my joining was 10-09-2018 but you wrote 10-09-2011')
 print(res10)
+
+res11 = re.search(r'^He', "Hello World")
+print(res11.group())
+
+res12 = re.search(r'rld$', " Hello World")
+print(res12.group())
+
+res12 = re.search(r'rld$', " Hello WORLD", re.IGNORECASE)  # regex is case sensitive hence to ignore case
+print(res12.group())
+
+# Python program to retrieve marks and names from given string
+str10 = 'Rahul got 75 marks, Vijay got 80 marks but Subbhu got 85 marks'
+marks = re.findall(r'\d{2,}', str10)
+print(marks)
+
+names = re.findall(r'[A-Z][a-z]*', str10)
+print(names)
+
+both = re.findall(r'\d{2,}|[A-Z][a-z]*', str10)  # using or in regex
+print(both)
+
+# write regex to find time in am and pm in given string
+str11 = 'Meeting may be at 10am 9am 4pmm 5pm'
+times = re.findall(r'\d{1,2}am|\d{1,2}pm', str11)
+print(times)
+
+# find out the email ids in given string
+str12 = " Mr Ajay can be contacted at ajay.gupta@gmail.com if not reachable then you can contact samay123@gmail.com " \
+        "and sachingupta@neo.org"
+emails = re.findall(r'[A-Za-z0-9]+\.?[A-Za-z0-9]+@[A-Za-z0-9]+\.com', str12)
+print(emails)
+
+emails = re.findall(r'\S+@\S+', str12)
+print(emails)
+
+with open('records.txt') as f:
+    with open('salary.txt', 'w') as f2:
+        for line in f:
+            employee_id = re.search(r'\d+', line)
+            salary = re.search(r'\d+\.\d+', line)
+            f2.write(employee_id.group() + '\t' + salary.group() + '\n')
+
+# Retrieving the information from HTML file using regular expression
+str13 = "<div><p><i></i></p></div>"
+all_elements = re.findall(r'<[a-z]+>', str13)
+all_elements_end = re.findall(r'</[a-z]+>', str13)
+print(all_elements)
+print(all_elements_end)

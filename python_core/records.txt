@@ -1,0 +1,4 @@
+1001    Vijay Khanna    Lukhnow     15000.00
+1002    Ajay Khanna     Lukhnow     14000.00
+1003    Sanjay Khanna   Lukhnow     13000.00
+1004    Rajesh Khanna   Lukhnow     11100.00
