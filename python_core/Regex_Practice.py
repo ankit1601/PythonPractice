@@ -157,3 +157,10 @@ all_elements = re.findall(r'<[a-z]+>', str13)
 all_elements_end = re.findall(r'</[a-z]+>', str13)
 print(all_elements)
 print(all_elements_end)
+
+
+expression = r'(?=ANA)'
+print(re.findall(expression, 'BANANA'))
+
+
+print(re.findall(r'\b\|\|\b', "a || b"))
